@@ -50,25 +50,15 @@ public class ServerClient implements Closeable{
             return reader.readLine();
         }
         catch (IOException e) {
-            throw  new RuntimeException(e);
+            throw new RuntimeException(e);
         }
 
     }
-    private BufferedReader createReader() {
-        try {
+    private BufferedReader createReader() throws IOException {
             return new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
-    private BufferedWriter createWriter() {
-        try {
+    private BufferedWriter createWriter() throws IOException {
             return new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
