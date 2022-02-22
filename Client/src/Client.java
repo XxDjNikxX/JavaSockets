@@ -7,8 +7,10 @@ public class Client {
         try (ServerClient serverClient = new ServerClient("127.0.0.1", 8000)) {
             System.out.println("Client connected to server");
             String request = "Za rodinu!";
-            String response = serverClient.readLine() + "\n" + serverClient.readLine();
-            System.out.println("Response: " + response);
+            System.out.println("Request: " + request);
+            serverClient.writeLine(request);
+            String response = serverClient.readLine();
+            System.out.println("Response: \n" + "Kirov Reporting: " + "\n" + "Current Weather: " + response);
         }
         catch(IOException exp){
             exp.printStackTrace();
